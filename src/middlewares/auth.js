@@ -7,7 +7,7 @@ const auth = (req, res, next) => {
     if (token) {
       token = token.split(" ")[1];
       let user = jwt.verify(token, SECRET_KEY);
-      req.userId = user.id;
+      req.userId = user.id;/* Add new parameter in header to indicate that this particular note belongs to this particular User*/
     } else {
       return res.status(401).json({ message: "Unauthoruzed User!" });
     }

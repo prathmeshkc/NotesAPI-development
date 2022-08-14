@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt"); /* to hash and verify passwords*/
 const userModel = require("../models/user");
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = process.env.SECRET_KEY;
@@ -24,7 +24,10 @@ const register = async (req, res) => {
       username: username,
     });
 
-    const token = jwt.sign({ email: result.email, id: result._id }, SECRET_KEY);
+    const token = jwt.sign(
+      { email: result.email, id: result._id },
+      SECRET_KEY
+    ); /* both the jwts are signed with the same payloads in register and login*/
     res.status(201).json({ user: result, token: token });
   } catch (error) {
     console.log(error);
@@ -48,7 +51,7 @@ const login = async (req, res) => {
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
       SECRET_KEY
-    );
+    ); /* both the jwts are signed with the same payloads in register and login*/
     res.status(200).json({ user: existingUser, token: token });
   } catch (error) {
     console.log(error);
