@@ -1,7 +1,11 @@
 const bcrypt = require("bcrypt"); /* to hash and verify passwords*/
 const userModel = require("../models/user");
 const jwt = require("jsonwebtoken");
-const SECRET_KEY = process.env.SECRET_KEY;
+const dotenv = require("dotenv"); /*for automatically loading environment variables from .env file*/
+
+dotenv.config()
+
+const SECRET_KEY = "Prathmesh@425001";
 
 const register = async (req, res) => {
   //1. Check for Existing User
