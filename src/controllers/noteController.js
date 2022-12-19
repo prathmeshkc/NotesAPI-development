@@ -5,6 +5,7 @@ const createNote = async (req, res) => {
   const { title, description } = req.body;
   let cloudinaryResult;
   let img_urls = [];
+  console.log("Req.body", req.body);
   console.log("userId", req.userId);
   console.log("Req.files:", req.files);
 
