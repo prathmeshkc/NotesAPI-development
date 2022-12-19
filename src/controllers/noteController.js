@@ -84,6 +84,15 @@ const updateNote = async (req, res) => {
       };
 
       try {
+        const oldNote = await noteModel.findById(id);
+        console.log(oldNote);
+        for (let index = 0; index < oldNote.img_urls.length; index++) {
+          cloudinary.uploader
+            .destroy(oldNote.img_urls[index].public_id)
+            .then((result) => console.log(result));
+        }
+       
+
         await noteModel.findByIdAndUpdate(id, result, { new: true });
         res.status(200).json(result);
       } catch (error) {
@@ -112,7 +121,6 @@ const deleteNote = async (req, res) => {
       message: "Note Deleted Successfully!",
       deleted_note: note,
     });
-    
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Something went wrong!" });
