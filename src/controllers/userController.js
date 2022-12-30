@@ -5,8 +5,7 @@ const dotenv = require("dotenv"); /*for automatically loading environment variab
 
 dotenv.config()
 
-// const SECRET_KEY = "Prathmesh@425001";
-const SECRET_KEY = process.env.SECRET_KEY
+const SECRET_KEY = "Prathmesh@425001";
 
 const register = async (req, res) => {
   //1. Check for Existing User
