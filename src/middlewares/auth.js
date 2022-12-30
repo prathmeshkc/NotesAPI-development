@@ -4,7 +4,7 @@ const dotenv = require("dotenv"); /*for automatically loading environment variab
 dotenv.config()
 
 
-const SECRET_KEY ="Prathmesh@425001"
+const SECRET_KEY = process.env.SECRET_KEY
 
 const auth = (req, res, next) => {
   try {
